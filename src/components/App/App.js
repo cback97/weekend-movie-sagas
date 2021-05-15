@@ -1,6 +1,7 @@
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList'
+
 
 function App() {
   return (
