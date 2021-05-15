@@ -47,6 +47,7 @@ const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
             return action.payload;
+            console.log(action.payload);
         default:
             return state;
     }
