@@ -50,6 +50,17 @@ function* getAllGenres() {
 function* pushMovie(action) {
     try {
         yield axios.post('/api/movie', action.payload);
+
+    } catch (error) {
+        alert(' sorry things are not working at the moment. Try again later');
+        console.log('error adding book', error);
+    }
+}
+
+// Add new movie data from AddMovie to database 
+function* getDetails(action) {
+    try {
+        yield axios.post('/api/detail', action.payload);
         yield put({ type: 'ADD_MOVIE_DATA' });
 
     } catch (error) {

@@ -1,6 +1,6 @@
 import {useHistory} from 'react-router-dom';
 
-function getDetails() {
+function DetailsPage() {
 
     const history = useHistory();
 
@@ -18,4 +18,4 @@ function getDetails() {
     )
 }
 
-export default getDetails;
+export default DetailsPage;

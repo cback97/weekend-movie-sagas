@@ -23,7 +23,7 @@ function AddMovie() {
     // function to do a thing with input/selector fields
     const handleSubmit = (event) => {
         // send local state inputs/selector fields to AddMovie reducer (NOT DONE)
-        dispatch({type:'ADD_MOVIE_DATA', payload: {title: title, poster: url, description: description, genre_id: selectGenre}})
+        dispatch({type:'PUSH_MOVIES', payload: {title: title, poster: url, description: description, genre_id: selectGenre}})
 
         // will want to clear input fields on submit
         setTitle('');
@@ -55,7 +55,7 @@ function AddMovie() {
                 <select required className="dropbtn" name="SELECT GENRE" onChange={(event) => setSelectGenre(event.target.value)}>
                      <option>-- SELECT GENRE --</option>
                 {genresReducer.map((genre) => 
-                   {return <option className="dropdown-content"  value={genre.id} > {genre.name} </option>}
+                   {return <option className="dropdown-content"  key={genre.id} value={genre.id} > {genre.name} </option>}
                 )}
                 </select>
                 <br />

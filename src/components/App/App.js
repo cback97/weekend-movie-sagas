@@ -2,7 +2,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList';
 import AddMovie from '../AddMovie/AddMovie';
-import getDetails from '../DetailsPage/DetailsPage'
+import DetailsPage from '../DetailsPage/DetailsPage'
 
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
             </li>
             <li>
               <Link to="/AddMovie">AddMovie</Link>
+            </li> 
+            <li>
+              <Link to="/MovieDetails">Details</Link>
             </li>
           </ul>
         </nav>
@@ -24,12 +27,11 @@ function App() {
           <MovieList />
         </Route>
         <Route path="/MovieDetails">
-          <getDetails />
+          <DetailsPage />
         </Route>
         <Route path="/AddMovie">
           <AddMovie />
         </Route>
-
       </Router>
     </div>
   );
