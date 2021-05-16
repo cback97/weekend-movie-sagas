@@ -1,9 +1,16 @@
 import './AddMovie.css';
 import { useSelector } from 'react-redux'
+import {useState} from 'react'
 
 
 
 function AddMovie() {
+    
+    // local state for input values in form
+    const [title, setTitle] = useState('')
+    const [url, setUrl] = useState('')
+    const [description, setDescription] = useState('')
+    const [selectGenre, setSelectGenre] = useState('')
 
     const genresReducer = useSelector(store => store.genres)
     console.log(genresReducer);
@@ -23,7 +30,7 @@ function AddMovie() {
                 <input type="text" placeholder="Description" />
                 <br />
                 <br />
-                <select >
+                <select> SELECT GENRE
                 {genresReducer.map((genres) =>
                             <option key={genres.id}> {genres.name} </option>
                         )}
