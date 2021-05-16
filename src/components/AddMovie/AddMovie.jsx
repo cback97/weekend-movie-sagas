@@ -1,5 +1,5 @@
 import './AddMovie.css';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 
 
@@ -14,13 +14,20 @@ function AddMovie() {
 // get genres reducer values for drop down menu selection
     const genresReducer = useSelector(store => store.genres)
     console.log(genresReducer);
+// pushing type and payload to reducer that will add movies to database (NOT DONE)
+   const dispatch = useDispatch();
+// function to do a thing with input/selector fields
+   const handleSubmit = () => {
+       // send local state inputs/selector fields to AddMovie reducer (NOT DONE)
+       dispatch()
+   }
 
     return (
         <>
             <header>
                 <h1> Add New Movie </h1>
             </header>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Movie Title" value={title} />
                 <br />
                 <br />
