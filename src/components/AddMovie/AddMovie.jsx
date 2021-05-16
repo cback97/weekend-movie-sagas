@@ -20,6 +20,13 @@ function AddMovie() {
    const handleSubmit = () => {
        // send local state inputs/selector fields to AddMovie reducer (NOT DONE)
        dispatch()
+
+       // will want to clear input fields on submit
+       setTitle('');
+       setUrl('');
+       setDescription('');
+       setSelectGenre('');
+
    }
 
     return (
