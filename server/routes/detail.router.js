@@ -3,8 +3,8 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
-  // Add query to get all genres
-  const query = `SELECT * FROM genres ORDER BY name ASC`;
+  // Add query to get all movie data
+  const query = `SELECT * FROM movies ORDER BY id`;
   pool.query(query)
     .then( result => {
       console.log(result.data);

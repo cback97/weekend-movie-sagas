@@ -21,8 +21,8 @@ function* rootSaga() {
     yield takeEvery('PUSH_MOVIES', pushMovie);
 }
 
+// Get all movies from database
 function* fetchAllMovies() {
-    // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
@@ -35,14 +35,13 @@ function* fetchAllMovies() {
 }
 
 // Get genres from genres table
-function* getAllGenres(action) {
+function* getAllGenres() {
     try {
         const genres = yield axios.get('/api/genre');
-        console.log('get all:', genres.data);
         yield put({ type: 'SET_GENRES', payload: genres.data });
 
-    } catch {
-        console.log('get all error');
+    } catch(error) {
+        console.log('get all error', error);
     }
 
 }
@@ -51,7 +50,7 @@ function* getAllGenres(action) {
 function* pushMovie(action) {
     try {
         yield axios.post('/api/movie', action.payload);
-        yield put({ type: 'FETCH_BOOKS' });
+        yield put({ type: 'ADD_MOVIE_DATA' });
 
     } catch (error) {
         alert(' sorry things are not working at the moment. Try again later');
@@ -83,7 +82,7 @@ const genres = (state = [], action) => {
 // Used to receive data from AddMovie component upon submission
 const movieData = (state = [], action) =>{
     switch (action.type) {
-        case 'GET_MOVIE_DATA':
+        case 'ADD_MOVIE_DATA':
             return action.payload;
         default:
             return state;
@@ -95,6 +94,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieData,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
