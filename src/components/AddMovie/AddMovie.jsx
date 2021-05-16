@@ -23,14 +23,19 @@ function AddMovie() {
                 <input type="text" placeholder="Description" />
                 <br />
                 <br />
-                <div className="dropdown">
+                <select >
+                {genresReducer.map((genres) =>
+                            <option key={genres.id}> {genres.name} </option>
+                        )}
+                </select>
+                {/* <div className="dropdown">
                     <button className="dropbtn">Hover to Select Movie Genre</button>
                     <div className="dropdown-content">
                         {genresReducer.map((item, i) =>
                             <option key={i}> {item.name} </option>
                         )}
                     </div>
-                </div>
+                </div> */}
             </form>
         </>
     )
