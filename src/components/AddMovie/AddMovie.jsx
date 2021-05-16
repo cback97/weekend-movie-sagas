@@ -11,23 +11,26 @@ function AddMovie() {
     const [url, setUrl] = useState('')
     const [description, setDescription] = useState('')
     const [selectGenre, setSelectGenre] = useState('')
-// get genres reducer values for drop down menu selection
+
+    // get genres reducer values for drop down menu selection
     const genresReducer = useSelector(store => store.genres)
     console.log(genresReducer);
-// pushing type and payload to reducer that will add movies to database (NOT DONE)
-   const dispatch = useDispatch();
-// function to do a thing with input/selector fields
-   const handleSubmit = () => {
-       // send local state inputs/selector fields to AddMovie reducer (NOT DONE)
-       dispatch()
 
-       // will want to clear input fields on submit
-       setTitle('');
-       setUrl('');
-       setDescription('');
-       setSelectGenre('');
+    // pushing type and payload to reducer that will add movies to database (NOT DONE)
+    const dispatch = useDispatch();
 
-   }
+    // function to do a thing with input/selector fields
+    const handleSubmit = () => {
+        // send local state inputs/selector fields to AddMovie reducer (NOT DONE)
+        dispatch()
+
+        // will want to clear input fields on submit
+        setTitle('');
+        setUrl('');
+        setDescription('');
+        setSelectGenre('');
+
+    }
 
     return (
         <>

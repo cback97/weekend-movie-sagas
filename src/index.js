@@ -17,7 +17,8 @@ const sagaMiddleware = createSagaMiddleware();
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('GET_GENRES', getAllGenres )
+    yield takeEvery('GET_GENRES', getAllGenres);
+    yield takeEvery('PUSH_MOVIES', pushMovie);
 }
 
 function* fetchAllMovies() {
@@ -30,9 +31,10 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
 }
 
+// Get genres from genres table
 function* getAllGenres(action) {
     try {
         const genres = yield axios.get('/api/genre');
@@ -43,6 +45,18 @@ function* getAllGenres(action) {
         console.log('get all error');
     }
 
+}
+
+// Add new movie data from AddMovie to database 
+function* pushMovie(action) {
+    try {
+        yield axios.post('/api/movie', action.payload);
+        yield put({ type: 'FETCH_BOOKS' });
+
+    } catch (error) {
+        alert(' sorry things are not working at the moment. Try again later');
+        console.log('error adding book', error);
+    }
 }
 
 
@@ -66,6 +80,16 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to receive data from AddMovie component upon submission
+const movieData = (state = [], action) =>{
+    switch (action.type) {
+        case 'GET_MOVIE_DATA':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
@@ -82,7 +106,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
