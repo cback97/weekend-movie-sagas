@@ -11,8 +11,11 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+  // function to select movie from page on click by id, and send particular movie.id to SAGA
+  const movieSelector = () => {
 
-    
+  }
+
     return (
         <main>
             <h1>MovieList</h1>
