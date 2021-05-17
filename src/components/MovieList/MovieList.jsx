@@ -15,8 +15,9 @@ function MovieList() {
 
   // function to select movie from page on click by id, and send particular movie.id to SAGA
   const movieSelector = () => {
-
-  }
+   dispatch({type: 'GET_DETAILS', payload: movieID})
+   history.push(`/MovieDetails/${movieID}`)
+  };
 
     return (
         <main>
@@ -24,7 +25,7 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} onClick={}>
+                        <div key={movie.id} value={movie.id} onClick={(event) => selectedMovieID(event.target.value)}>
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>
