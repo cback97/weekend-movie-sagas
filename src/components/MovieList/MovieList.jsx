@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
+import {useState} from 'react'
 
 function MovieList() {
-
+    //to store event.target.value from selected movie into local state
+    const [movieID, selectedMovieID] = useState('')
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
 
@@ -22,7 +24,7 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
+                        <div key={movie.id} onClick={}>
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>
