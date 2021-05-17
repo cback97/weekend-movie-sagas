@@ -19,6 +19,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('GET_GENRES', getAllGenres);
     yield takeEvery('PUSH_MOVIES', pushMovie);
+    yield takeEvery('GET_DETAILS', getDetails);
 }
 
 // Get all movies from database
@@ -84,6 +85,16 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+// Used to receive data from getDetails SAGA
+const movieData = (state = [], action) =>{
+    switch (action.type) {
+        case 'ADD_MOVIE_DATA':
             return action.payload;
         default:
             return state;
