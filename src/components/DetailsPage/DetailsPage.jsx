@@ -1,15 +1,19 @@
 import {useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useEffect } from 'react';
 
 function DetailsPage() {
 
     const detailsReducer = useSelector(store => store.movieData)
     const history = useHistory();
-
+    const dispatch = useDispatch();
+    
     const handleClick = () => {
      history.push(`/`)
     }
+    useEffect(() => {
+        dispatch({ type: 'GET_DETAILS' });
+    }, []);
 
     return (
 <>

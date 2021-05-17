@@ -61,7 +61,7 @@ function* pushMovie(action) {
 // Get details from the database by id query 
 function* getDetails(action) {
     try {
-       const details = yield axios.get('/api/detail', action.payload);
+       const details = yield axios.get('/api/detail');
         yield put({ type: 'ADD_MOVIE_DATA', payload: details.payload });
 
     } catch (error) {
