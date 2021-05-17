@@ -81,27 +81,3 @@ function AddMovie() {
 }
 
 export default AddMovie;
-
-
-{/* <option className="dropdown-content"  value={genre.id} > Adventure </option>
-<option className="dropdown-content"  value={genre.id} > Animated </option>
-<option className="dropdown-content"  value={genre.id} > Biographical </option>
-<option className="dropdown-content"  value={genre.id} > Comedy </option>
-<option className="dropdown-content"  value={genre.id} > Disaster </option>
-<option className="dropdown-content"  value={genre.id} > Drama </option>
-<option className="dropdown-content"  value={genre.id} > Epic </option>
-<option className="dropdown-content"  value={genre.id} > Fantasy </option>
-<option className="dropdown-content"  value={genre.id} > Musical </option>
-<option className="dropdown-content"  value={genre.id} > Romantic </option>
-<option className="dropdown-content"  value={genre.id} > Science Fiction </option>
-<option className="dropdown-content"  value={genre.id} > Space-Opera </option>
-<option className="dropdown-content"  value={genre.id} > Superhero </option> */}
-
-{/* <div className="dropdown">
-                    <button className="dropbtn">Hover to Select Movie Genre</button>
-                    <div className="dropdown-content">
-                        {genresReducer.map((item, i) =>
-                            <option key={i}> {item.name} </option>
-                        )}
-                    </div>
-                </div> */}
