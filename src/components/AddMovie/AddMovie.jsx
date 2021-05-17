@@ -1,7 +1,8 @@
 // import './AddMovie.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import {useEffect} from 'react'
+import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -20,16 +21,29 @@ function AddMovie() {
     // pushing type and payload to reducer that will add movies to database (NOT DONE)
     const dispatch = useDispatch();
 
+    // to be used for bringing user back to home page
+    const history = useHistory();
+
     // function to do a thing with input/selector fields
     const handleSubmit = (event) => {
         // send local state inputs/selector fields to AddMovie reducer (NOT DONE)
-        dispatch({type:'PUSH_MOVIES', payload: {title: title, poster: url, description: description, genre_id: selectGenre}})
+        dispatch({ type: 'PUSH_MOVIES', payload: { title: title, poster: url, description: description, genre_id: selectGenre } })
 
         // will want to clear input fields on submit
         setTitle('');
         setUrl('');
         setDescription('');
         setSelectGenre('');
+    }
+
+    const handleClick = () => {
+        // will want to clear input fields on click
+        setTitle('');
+        setUrl('');
+        setDescription('');
+        setSelectGenre('');
+        // will bring user back to home page
+        history.push('/')
     }
 
     useEffect(() => {
@@ -43,24 +57,24 @@ function AddMovie() {
                 <h1> Add New Movie </h1>
             </header>
             <form onSubmit={handleSubmit}>
-                <input required type="text" placeholder="Movie Title" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                <input required type="text" placeholder="Movie Title" value={title} onChange={(event) => setTitle(event.target.value)} />
                 <br />
                 <br />
-                <input required type="text" placeholder="Poster Image URL" value={url} onChange={(event) => setUrl(event.target.value)}/>
+                <input required type="text" placeholder="Poster Image URL" value={url} onChange={(event) => setUrl(event.target.value)} />
                 <br />
                 <br />
-                <input required type="text" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)}/>
+                <input required type="text" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
                 <br />
                 <br />
-                <select required className="dropbtn" name="SELECT GENRE" onChange={(event) => setSelectGenre(event.target.value)}>
-                     <option>-- SELECT GENRE --</option>
-                {genresReducer.map((genre) => 
-                   {return <option className="dropdown-content"  key={genre.id} value={genre.id} > {genre.name} </option>}
-                )}
+                <select required name="SELECT GENRE" onChange={(event) => setSelectGenre(event.target.value)}>
+                    <option>-- SELECT GENRE --</option>
+                    {genresReducer.map((genre) => { return <option key={genre.id} value={genre.id}> {genre.name} </option> }
+                    )}
                 </select>
                 <br />
                 <br />
-                <button type="submit"> Submit New Movie </button>
+                <button type="submit"> Save New Movie </button>
+                <button onClick={handleClick}> Cancel </button>
             </form>
         </>
     )
@@ -83,7 +97,7 @@ export default AddMovie;
 <option className="dropdown-content"  value={genre.id} > Space-Opera </option>
 <option className="dropdown-content"  value={genre.id} > Superhero </option> */}
 
-     {/* <div className="dropdown">
+{/* <div className="dropdown">
                     <button className="dropbtn">Hover to Select Movie Genre</button>
                     <div className="dropdown-content">
                         {genresReducer.map((item, i) =>
