@@ -18,9 +18,6 @@ function App() {
             <li>
               <Link to="/AddMovie">AddMovie</Link>
             </li> 
-            <li>
-              <Link to="/MovieDetails">Details</Link>
-            </li>
           </ul>
         </nav>
         <Route path="/" exact>
