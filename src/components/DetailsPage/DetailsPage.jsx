@@ -21,9 +21,9 @@ function DetailsPage() {
             <header>
                 <h1>Selected Film Details</h1>
             </header>
-            {detailsReducer.map(movie => {
+            {detailsReducer.map((movie,i) => {
                 return (
-                    <div key={movie.id} >
+                    <div key={i} >
                         <h2>{movie.title}</h2>
                         <h3>Genres</h3>
                         <ul>{movie.genre_name.map(name => <li key={name}> {name} </li>)}</ul>
