@@ -53,8 +53,8 @@ function* pushMovie(action) {
         yield axios.post('/api/movie', action.payload);
 
     } catch (error) {
-        alert(' sorry things are not working at the moment. Try again later');
-        console.log('error adding book', error);
+        alert(' sorry adding a movie is not working at the moment. Try again later');
+        console.log('error adding movie', error);
     }
 }
 
@@ -66,7 +66,7 @@ function* getDetails(action) {
         yield put({ type: 'ADD_MOVIE_DATA', payload: details.data });
 
     } catch (error) {
-        alert(' sorry things are not working at the moment. Try again later');
+        alert(' sorry getting details is not working at the moment. Try again later');
         console.log('error adding details', error);
     }
 }

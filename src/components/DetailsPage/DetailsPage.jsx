@@ -24,6 +24,10 @@ function DetailsPage() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
+                            <h5>Genres</h5>
+                            <ul>{movie.genre_name.map(name => <li key={name}> {name} </li>)}</ul>
+                            <br />
+                            <br />
                             <h4>{movie.name}</h4>
                             <img src={movie.poster} alt={movie.title}/>
                         </div>
