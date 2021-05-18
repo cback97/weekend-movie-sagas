@@ -61,12 +61,13 @@ function* pushMovie(action) {
 // Get details from the database by id query 
 function* getDetails(action) {
     try {
-       const details = yield axios.get('/api/detail');
-        yield put({ type: 'ADD_MOVIE_DATA', payload: details.payload });
+       const details = yield axios.get(`/api/detail/${action.payload}`);
+       console.log('here is details', details);
+        yield put({ type: 'ADD_MOVIE_DATA', payload: details.data });
 
     } catch (error) {
         alert(' sorry things are not working at the moment. Try again later');
-        console.log('error adding book', error);
+        console.log('error adding details', error);
     }
 }
 
