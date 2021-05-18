@@ -63,7 +63,10 @@ function AddMovie() {
                 <input required type="text" placeholder="Poster Image URL" value={url} onChange={(event) => setUrl(event.target.value)} />
                 <br />
                 <br />
-                <input required type="text" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
+                <label >Movie Description:</label>
+                <textarea required rows="4" cols="35" value={description} onChange={(event) => setDescription(event.target.value)}>
+                </textarea>
+                {/* <input required type="text" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} /> */}
                 <br />
                 <br />
                 <select required name="SELECT GENRE" onChange={(event) => setSelectGenre(event.target.value)}>

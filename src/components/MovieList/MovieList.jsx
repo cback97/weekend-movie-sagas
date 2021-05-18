@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css';
-import {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function MovieList() {
     //to store event.target.value from selected movie into local state
@@ -15,11 +15,11 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-  // function to select movie from page on click by id, and send particular movie.id to SAGA
-  const movieSelector = (movieID) => {
-   dispatch({type: 'GET_DETAILS', payload: movieID})
-   history.push(`/MovieDetails`)
-  };
+    // function to select movie from page on click by id, and send particular movie.id to SAGA
+    const movieSelector = (movieID) => {
+        dispatch({ type: 'GET_DETAILS', payload: movieID })
+        history.push(`/MovieDetails`)
+    };
 
     return (
         <main>
@@ -29,7 +29,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} onClick={(event) => movieSelector(movie.id)}>
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img src={movie.poster} alt={movie.title} />
                         </div>
                     );
                 })}
